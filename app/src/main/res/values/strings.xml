@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ecareVideo</string>
+    <string name="request_room_name">Entrer le nom de la chambre ou créer une nouvelle</string>
+</resources>
