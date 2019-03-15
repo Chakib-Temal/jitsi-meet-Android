@@ -2,7 +2,6 @@ package com.chakibtemal.ecarevideo;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.facebook.react.modules.core.PermissionListener;
@@ -14,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class VideoCallActivity extends FragmentActivity implements JitsiMeetActivityInterface {
+    public static final String domainName = "https://ecare.voip.bellatrix.io/";
     private JitsiMeetView view;
 
     @Override
@@ -26,7 +26,7 @@ public class VideoCallActivity extends FragmentActivity implements JitsiMeetActi
         String nameRoom = intent.getStringExtra("ROOM_NAME");
 
         try {
-            url = new URL("https://ecare.voip.bellatrix.io/"+ nameRoom);
+            url = new URL(domainName + nameRoom);
         } catch (MalformedURLException e) { e.printStackTrace(); }
 
         view.loadURL(url);
@@ -36,10 +36,8 @@ public class VideoCallActivity extends FragmentActivity implements JitsiMeetActi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         view.dispose();
         view = null;
-
     }
 
     @Override
@@ -50,13 +48,9 @@ public class VideoCallActivity extends FragmentActivity implements JitsiMeetActi
     @Override
     protected void onStop() {
         super.onStop();
-
     }
 
     @Override
-    public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {
-
-    }
-
+    public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {}
 
 }

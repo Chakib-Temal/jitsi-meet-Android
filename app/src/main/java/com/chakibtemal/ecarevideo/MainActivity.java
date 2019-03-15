@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.nio.charset.Charset;
 import java.util.Random;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-    private EditText room_name;
-    private Button go_to_videoActivity;
+    public static final int sizeOfRandomNameRoom = 8;
+    private EditText        room_name;
+    private Button          go_to_videoActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         go_to_videoActivity = (Button) findViewById(R.id.go_to_videoActivity);
         go_to_videoActivity.setOnClickListener(this);
 
+        checkPermissions();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.go_to_videoActivity:
+                String nameRoom;
+                nameRoom = room_name.getText().toString();
+                if (nameRoom.isEmpty()){
+                    nameRoom = getRandomString();
+                }
+                Intent intent = new Intent(MainActivity.this, VideoCallActivity.class);
+                intent.putExtra("ROOM_NAME", nameRoom);
+                startActivity(intent);
+        }
+    }
+
+    public void checkPermissions(){
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
                 Manifest.permission.CAPTURE_AUDIO_OUTPUT,
@@ -55,33 +74,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         return true;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.go_to_videoActivity:
-                String nameRoom;
-                nameRoom = room_name.getText().toString();
-
-                if (nameRoom.isEmpty()){
-                    nameRoom = getSaltString();
-                }
-                Intent intent = new Intent(MainActivity.this, VideoCallActivity.class);
-                intent.putExtra("ROOM_NAME", nameRoom);
-                startActivity(intent);
-
-        }
-    }
-
-    protected String getSaltString() {
-        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    public static String getRandomString() {
+        String possibilities = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
-        while (salt.length() < 8) { // length of the random string.
-            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-            salt.append(SALTCHARS.charAt(index));
+        while (salt.length() < sizeOfRandomNameRoom) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * possibilities.length());
+            salt.append(possibilities.charAt(index));
         }
         String saltStr = salt.toString();
         return saltStr;
-
     }
 }
