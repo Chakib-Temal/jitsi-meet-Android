@@ -1,9 +1,10 @@
-Source used: https://jitsi.org/  .
-Useful link: https://github.com/jitsi/jitsi-meet  .
+Source used: https://jitsi.org/  
+Useful link: https://github.com/jitsi/jitsi-meet  
 
-What you will need to install the server:
-1-Prepare a preferred domain name or otherwise an IP address
-2-Type of OS Recommended: Ubuntu 16.04 TLS / 18 .04 TLS
+
+What you will need to install the server:  
+1-Prepare a preferred domain name or otherwise an IP address  
+2-Type of OS Recommended: Ubuntu 16.04 TLS / 18 .04 TLS  
 
 Commands to use: I used a Ubuntu 16.04 server, the basic commands were not installed by defaults, so it might be that your server already contains default software and that it will tell you that it is already installed for some orders.
 
