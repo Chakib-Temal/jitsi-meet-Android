@@ -1,5 +1,5 @@
-Source used: https://jitsi.org/
-Useful link: https://github.com/jitsi/jitsi-meet
+Source used: https://jitsi.org/  .
+Useful link: https://github.com/jitsi/jitsi-meet  .
 
 What you will need to install the server:
 1-Prepare a preferred domain name or otherwise an IP address
