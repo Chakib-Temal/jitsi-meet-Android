@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +40,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if (nameRoom.isEmpty()){
                     nameRoom = getRandomString();
                 }
-                Intent intent = new Intent(MainActivity.this, VideoCallActivity.class);
+                Intent intent = new Intent(MainActivity.this, TestActivity.class);
                 intent.putExtra("ROOM_NAME", nameRoom);
                 startActivity(intent);
         }
