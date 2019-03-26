@@ -10,15 +10,12 @@ import org.jitsi.meet.sdk.ReactActivityLifecycleCallbacks;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class TestActivity extends FragmentActivity implements JitsiMeetActivityInterface {
-    public static final String domainName = "https://ecare.voip.bellatrix.io/";
+public class videoCallActivity extends FragmentActivity implements JitsiMeetActivityInterface {
+    public static final String domainName = "https://streaming.predimed-technology.com/";
     private JitsiMeetView view;
 
     @Override
-    protected void onActivityResult(
-            int requestCode,
-            int resultCode,
-            Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         ReactActivityLifecycleCallbacks.onActivityResult(
                 this, requestCode, resultCode, data);
     }
@@ -76,9 +73,7 @@ public class TestActivity extends FragmentActivity implements JitsiMeetActivityI
 
     @Override
     public void onRequestPermissionsResult(
-            final int requestCode,
-            final String[] permissions,
-            final int[] grantResults) {
+            final int requestCode, final String[] permissions, final int[] grantResults) {
         ReactActivityLifecycleCallbacks.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
